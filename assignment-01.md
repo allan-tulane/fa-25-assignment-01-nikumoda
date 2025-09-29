@@ -10,22 +10,27 @@ In this assignment, you will learn more about asymptotic notation, parallelism, 
 
   - 1a. Is $2^{n+1} \in O(2^n)$? Why or why not?
 
-Yes, because $2^{n+1} = 2 \cdot 2^n$, so for $c=2$, $c \cdot 2^n \geq 2^{n+1}$ for all $n \geq 1$. Thus, $2^{n+1}$ grows at the same rate as $2^n$ up to a constant factor.
+Yes, because $2^{n+1} = 2 \cdot 2^n$, so when $c=2$, $c \cdot 2^n \geq 2^{n+1}$ for all $n \geq 1$. Thus, $2^{n+1}$ grows at the same rate as $2^n$ up to constant factor c.
 
   - 1b. Is $2^{2^n} \in O(2^n)$? Why or why not?     
-No, because $2^{2^n}$ grows much faster than $2^n$. There is no constant $c$ such that $c \cdot 2^n \geq 2^{2^n}$ for all large $n$. Taking logarithms, $n + \log_2 c < 2^n$ for large $n$, which is not true.
 
-  - 1c. Is $n^{1.01} \in O(\mathrm{log}^2 n)$?    
+No, because $2^{2^n}$ grows much faster than $2^n$. You cannot have a constant $c$ where $c \cdot 2^n \geq 2^{2^n}$ for all large $n$. If you take logarithms, $n + \log_2 c < 2^n$ for large $n$, which is not true.
+
+  - 1c. Is $n^{1.01} \in O(\mathrm{log}^2 n)$? 
+
 No, $n^{1.01}$ grows much faster than $(\log n)^2$ for large $n$. There is no constant $c$ such that $n^{1.01} \leq c \cdot (\log n)^2$ for all large $n$.
 
   - 1d. Is $n^{1.01} \in \Omega(\mathrm{log}^2 n)$?
-Yes, because $n^{1.01}$ grows polynomially while $(\log n)^2$ grows much slower. For large $n$, $n^{1.01}$ will always eventually be greater than $c \cdot (\log n)^2$ for any constant $c$.
+
+Yes, because $n^{1.01}$ grows polynomially (very quickly) while $(\log n)^2$ grows much slower. For large $n$, $n^{1.01}$ will always eventually be greater than $c \cdot (\log n)^2$ for constant $c$.
 
   - 1e. Is $\sqrt{n} \in O((\mathrm{log} n)^3)$?  
-No, $\sqrt{n}$ grows faster than $(\log n)^3$ for large $n$. The limit $\lim_{n \to \infty} \frac{\sqrt{n}}{(\log n)^3} = \infty$, so $\sqrt{n}$ is not in $O((\log n)^3)$.
+  
+No, $\sqrt{n}$ grows faster than $(\log n)^3$ for large $n$. The limit $\lim_{n \to \infty} \frac{\sqrt{n}}{(\log n)^3} = \infty$, so $\sqrt{n}$ is not bounded by $O((\log n)^3)$.
 
-  - 1f. Is $\sqrt{n} \in \Omega((\mathrm{log} n)^3)$?  
-Yes, for large $n$, $\sqrt{n}$ grows faster than $(\log n)^3$, so $\sqrt{n}$ is in $\Omega((\log n)^3)$.
+  - 1f. Is $\sqrt{n} \in \Omega((\mathrm{log} n)^3)$? 
+
+Yes, for large $n$, $\sqrt{n}$ grows faster than $(\log n)^3$, so $\sqrt{n}$ is bounded by $\Omega((\log n)^3)$.
 
 
 2. **SPARC to Python** (12 pts)
@@ -47,7 +52,7 @@ $$
 
   - 2b. (6 pts) What does this function do, in your own words?  
 
-This function computes the $x$th Fibonacci number recursively. If $x$ is 0 or 1, it returns $x$. Otherwise, it returns the sum of the Fibonacci numbers for $x-1$ and $x-2$.
+This function computes the $x$ th Fibonacci number recursively. If $x$ is 0 or 1, it returns $x$. Otherwise, it returns the sum of the Fibonacci numbers for $x-1$ and $x-2$.
 
   
   
@@ -106,19 +111,6 @@ The work is $O(n)$ because every element in the list is checked once. The span i
   - 3d. (4 pts) What is the Work and Span of this sequential algorithm?  
 
 The work is $O(n)$, as each element is processed. The span is $O(\log n)$, since the recursive calls divide the problem in half at each step.
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 
   - 3e. (4 pts) Assume that we parallelize in a similar way we did with `sum_list_recursive`. That is, each recursive call spawns a new thread. What is the Work and Span of this algorithm?  
 

@@ -58,7 +58,7 @@ def longest_run_recursive(mylist, key):
     mid = n // 2
     left = longest_run_recursive(mylist[:mid], key)
     right = longest_run_recursive(mylist[mid:], key)
-    # Combine results
+ 
     is_entire_range = left.is_entire_range and right.is_entire_range
     left_size = left.left_size if not left.is_entire_range else left.left_size + right.left_size
     right_size = right.right_size if not right.is_entire_range else right.right_size + left.right_size
