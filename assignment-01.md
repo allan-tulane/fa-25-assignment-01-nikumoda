@@ -75,7 +75,7 @@ This function computes the $x$ th Fibonacci number recursively. If $x$ is 0 or 1
 
 Consider the following function:  
 
-```python
+python
 def longest_run(myarray, key)
    """
     Input:
@@ -84,7 +84,8 @@ def longest_run(myarray, key)
     Return:
       the longest continuous sequence of `key` in `myarray`
    """
-```
+
+
 E.g., `longest_run([2,12,12,8,12,12,12,0,12,1], 12) == 3`  
  
   - 3a. (7 pts) First, implement an iterative, sequential version of `longest_run` in `main.py`.  
